@@ -154,7 +154,7 @@ export async function fetchComments(recipeId) {
 
 export async function getHomePageRecipes() {
   const res = await fetch(`${process.env.URL}/api/homeRecipes`, {
-    next: { revalidate: 0 },
+    next: { revalidate: 0, cache: "no-store" },
   });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
