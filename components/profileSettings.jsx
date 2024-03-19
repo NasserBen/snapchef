@@ -53,17 +53,19 @@ export default function ProfileSettings({ setShowSettings, profileSettings }) {
           // Combine the year and object key into a single string
           const objectKey = `${datePart}/${idPart}`;
           presignedUrlResponse = await fetch(
-            `${process.env.URL}/api/getUploadImageURL?id=${id}?existingKey=${objectKey}`,
+            "http://localhost:3000/api/getUploadImageURL",
             {
-              method: "GET",
+              method: "POST",
+              body: JSON.stringify({ id: id, existingKey: objectKey }),
             }
           );
         } else {
           // image url does not already exist
           presignedUrlResponse = await fetch(
-            `${process.env.URL}/api/getUploadImageURL?id=${id}`,
+            "http://localhost:3000/api/getUploadImageURL",
             {
-              method: "GET",
+              method: "POST",
+              body: { id: session?.user?.name },
             }
           );
         }

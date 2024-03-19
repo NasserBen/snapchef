@@ -3,7 +3,6 @@ import { BsBookmark, BsBookmarkCheckFill } from "react-icons/bs";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import SignInModal from "./signInModal";
-import { fetchProfile } from "@/Constants";
 import { motion } from "framer-motion";
 
 export default function Favorites({ recipeId }) {
@@ -17,8 +16,12 @@ export default function Favorites({ recipeId }) {
     const fetchFavoritedPosts = async () => {
       if (session) {
         try {
-          const userData = await fetchProfile(session.user.name);
-          setIsFavorited(userData.user.favoritedPosts.includes(recipeId));
+          const userData = await fetch(`/api/fetchProfile/2`, {
+            method: "POST",
+            body: JSON.stringify({ username: session.user.name }),
+          });
+          const responseJson = await userData.json();
+          setIsFavorited(responseJson.user.favoritedPosts.includes(recipeId));
         } catch (error) {
           console.error("Error fetching user data:", error);
         }

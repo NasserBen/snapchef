@@ -2,7 +2,7 @@ import AWS from "aws-sdk";
 import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
-export async function GET(req) {
+export async function POST(req) {
   try {
     const { existingKey, id } = await req.json();
 
@@ -13,13 +13,13 @@ export async function GET(req) {
       region: process.env.AWS_REGION,
     });
 
+    // Set parameters for the S3 bucket and object
+    const bucketName = process.env.AWS_BUCKET_NAME;
+
     if (existingKey) {
       console.log("deleted", existingKey);
       await s3.deleteObject({ Bucket: bucketName, Key: existingKey }).promise();
     }
-
-    // Set parameters for the S3 bucket and object
-    const bucketName = process.env.AWS_BUCKET_NAME;
 
     const uuid = uuidv4();
 

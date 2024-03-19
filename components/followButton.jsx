@@ -1,8 +1,6 @@
-import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import SignInModal from "./signInModal";
-import { fetchProfile } from "@/Constants";
 import { motion } from "framer-motion";
 
 export default function FollowButton({ targetId }) {
@@ -15,10 +13,14 @@ export default function FollowButton({ targetId }) {
     const fetchFollowing = async () => {
       if (session) {
         try {
-          const userData = await fetchProfile(session.user.name);
-          setIsFollowing(userData.user.following.includes(targetId));
+          const userData = await fetch(`/api/fetchProfile/2`, {
+            method: "POST",
+            body: JSON.stringify({ username: session.user.name }),
+          });
+          const responseJson = await userData.json();
+          setIsFollowing(responseJson.user.following.includes(targetId));
         } catch (error) {
-          console.error("Error fetching user data:", error);
+          console.error("Error fetching user data following:", error);
         }
       }
     };

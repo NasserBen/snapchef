@@ -18,8 +18,12 @@ export default function Likes({ likeCount, recipeId }) {
     const fetchLikedPosts = async () => {
       if (session) {
         try {
-          const userData = await fetchProfile(session.user.name);
-          setIsLiked(userData.user.likedPosts.includes(recipeId));
+          const userData = await fetch(`/api/fetchProfile/2`, {
+            method: "POST",
+            body: JSON.stringify({ username: session.user.name }),
+          });
+          const responseJson = await userData.json();
+          setIsLiked(responseJson.user.likedPosts.includes(recipeId));
         } catch (error) {
           console.error("Error fetching user data:", error);
         }
