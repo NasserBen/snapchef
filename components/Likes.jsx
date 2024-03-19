@@ -4,7 +4,7 @@ import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import SignInModal from "./signInModal";
-import { fetchProfile } from "@/constants";
+import { fetchProfile } from "@/Constants";
 import { motion } from "framer-motion";
 
 export default function Likes({ likeCount, recipeId }) {
@@ -67,7 +67,7 @@ export default function Likes({ likeCount, recipeId }) {
           onClick={handleLikeClick}
         />
       ) : (
-        <motion.div whileTap={{ scale: 1.5 }} >
+        <motion.div whileTap={{ scale: 1.5 }}>
           <FaRegHeart
             className="text-custom-main-dark text-2xl hover:cursor-pointer"
             onClick={handleLikeClick}

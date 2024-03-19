@@ -3,7 +3,7 @@ import { BsBookmark, BsBookmarkCheckFill } from "react-icons/bs";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import SignInModal from "./signInModal";
-import { fetchProfile } from "@/constants";
+import { fetchProfile } from "@/Constants";
 import { motion } from "framer-motion";
 
 export default function Favorites({ recipeId }) {
@@ -51,7 +51,7 @@ export default function Favorites({ recipeId }) {
       }
       setIsFavorited(!isFavorited);
       setShowOverlay(true);
-      setTimeout(() => setShowOverlay(false), 3000);  //display message for 3 seconds
+      setTimeout(() => setShowOverlay(false), 3000); //display message for 3 seconds
     } catch (error) {
       console.error("Error updating favorites:", error);
     }
@@ -83,8 +83,7 @@ export default function Favorites({ recipeId }) {
             <p className="text-lg text-center">
               {isFavorited
                 ? "Recipe added to favorites!"
-                : "Recipe removed from favorites!"
-              }
+                : "Recipe removed from favorites!"}
             </p>
           </motion.div>
         </div>

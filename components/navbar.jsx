@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import SignInButton from "./signInButton";
 import SnapChefLogo from "../assets/LogoDesign1.svg";
-import Search from "../assets/icons/Search.svg";
+import Search from "../assets/icons/search.svg";
 import Home from "../assets/icons/home.svg";
-import HomeFill from "../assets/icons/homefill.svg";
+import HomeFill from "../assets/icons/homeFill.svg";
 import Bell from "../assets/icons/bell.svg";
 import BellFill from "../assets/icons/bellfill.svg";
 import Post from "../assets/icons/post.svg";
@@ -18,7 +18,7 @@ import Profile from "../assets/icons/profile.svg";
 import ProfileFill from "../assets/icons/profilefill.svg";
 import Autosuggest from "react-autosuggest";
 import Fuse from "fuse.js";
-import { fetchRecipeNames } from "@/constants";
+import { fetchRecipeNames } from "@/Constants";
 import Notifications from "./notifications";
 
 const fuseSettings = {
@@ -133,7 +133,9 @@ function Navbar() {
         />
       </Link>
       {/* Display only the search field on the home and search page */}
-      {(pathname === "/home" || pathname.startsWith("/search/") || pathname.startsWith("/filter/")) && (
+      {(pathname === "/home" ||
+        pathname.startsWith("/search/") ||
+        pathname.startsWith("/filter/")) && (
         <form onSubmit={handleSubmit} className="z-10">
           <div className="fixed top-8 transform -translate-x-1/2">
             <div className="relative">

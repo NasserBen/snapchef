@@ -1,5 +1,5 @@
 import Post from "@/components/post";
-import { fetchFavRecipes } from "@/constants";
+import { fetchFavRecipes } from "@/Constants";
 
 export default async function Favorites({ params }) {
   const { username } = params;
