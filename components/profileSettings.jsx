@@ -60,7 +60,7 @@ export default function ProfileSettings({ setShowSettings, profileSettings }) {
           // image url does not already exist
           presignedUrlResponse = await fetch("/api/getUploadImageURL", {
             method: "POST",
-            body: { id: id },
+            body: JSON.stringify({ id: id }),
           });
         }
 

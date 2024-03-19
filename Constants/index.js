@@ -133,7 +133,7 @@ export async function fetchFavRecipes(username) {
 export async function fetchComments(recipeId) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/fetchComments?recipe_id=${recipeId}`,
+      `${process.env.URL}/api/fetchComments?recipe_id=${recipeId}`,
       {
         next: {
           revalidate: 0, // use 0 to opt out of using cache
