@@ -3,8 +3,6 @@ import { getHomePageRecipes } from "@/Constants";
 import SortFilterDropdown from "@/components/filterOptions";
 import NotFoundPage from "@/app/not-found";
 
-export const dynamic = "force-dynamic";
-
 export default async function Home() {
   const data = await getHomePageRecipes(); // needed fix: shouldn't get all the recipe posts in the DB
   if (!data) {
