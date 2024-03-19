@@ -7,7 +7,7 @@ import SignInButton from "./signInButton";
 import SnapChefLogo from "../assets/LogoDesign1.svg";
 import Search from "../assets/icons/search.svg";
 import Home from "../assets/icons/home.svg";
-import HomeFill from "../assets/icons/home";
+import HomeFill from "../assets/icons/homeFill.svg";
 import Bell from "../assets/icons/bell.svg";
 import BellFill from "../assets/icons/bellFill.svg";
 import Post from "../assets/icons/post.svg";
