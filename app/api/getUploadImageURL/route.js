@@ -4,10 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export async function GET(req) {
   try {
-    // const existingKey = req.query.existingKey;
-    const searchParams = req.nextUrl.searchParams;
-    const existingKey = searchParams.get("existingKey");
-    const id = searchParams.get("id");
+    const { existingKey, id } = await req.json();
 
     // Configure AWS
     const s3 = new AWS.S3({

@@ -32,7 +32,7 @@ export async function GET(req) {
     // return favorited posts information
     return NextResponse.json({ documents: documents });
   } catch (error) {
-    console.error("Error fetching user and posts:", error);
+    console.error("Error fetching user and posts fetch fav:", error);
     return NextResponse.json(
       { message: "Internal server error" },
       { status: 500 }

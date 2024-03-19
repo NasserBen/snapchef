@@ -5,8 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req) {
   try {
-    const searchParams = req.nextUrl.searchParams;
-    const username = searchParams.get("username");
+    const { username } = await req.json();
 
     if (!username) {
       return NextResponse.json(
@@ -59,7 +58,7 @@ export async function GET(req) {
       posts, // Return the found posts
     });
   } catch (error) {
-    console.error("Error fetching user and posts:", error);
+    console.error("Error fetching user and posts fetchProfile:", error);
     return NextResponse.json(
       { message: "Internal server error" },
       { status: 500 }
