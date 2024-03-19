@@ -8,7 +8,11 @@ export default async function SearchByFilter({ params }) {
     const { option } = params;
     const data = await fetchFilteredList(option);
 
-    if (!data) {
+    if (
+      option !== "highProtein" &&
+      option !== "vegan" &&
+      option !== "glutenFree"
+    ) {
       return <NotFoundPage />;
     }
 
