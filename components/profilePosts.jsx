@@ -2,6 +2,7 @@
 
 import { FaRegHeart } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function ProfilePosts({ posts }) {
   const { title, likeCount, imageURL } = posts;
@@ -18,7 +19,7 @@ export default function ProfilePosts({ posts }) {
         {/* Post Picture */}
         {imageURL && (
           <div className="flex bg-orange-100 p-5 rounded-lg flex-col items-center transition-all ease-linear border-opacity-0 border-custom-main-dark hover:border-opacity-50 border-2">
-            <img
+            <Image
               src={imageURL}
               alt="My Post"
               className="mb-2"

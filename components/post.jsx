@@ -22,7 +22,7 @@ export default function Post({ post }) {
   } = post;
 
   const truncateText = (text) => {
-    return text.length > 44 ? text.slice(0, 44) + "..." : text;   //reduced from 50 -> 44 to make images consistent with posts
+    return text.length > 44 ? text.slice(0, 44) + "..." : text; //reduced from 50 -> 44 to make images consistent with posts
   };
 
   return (
@@ -61,7 +61,7 @@ export default function Post({ post }) {
             href={`/recipes/${_id}`}
             className="hover:opacity-80 transition-opacity ease-linear"
           >
-            <img
+            <Image
               src={recipe_image}
               alt="Post Image"
               width={300}

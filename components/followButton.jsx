@@ -5,7 +5,7 @@ import SignInModal from "./signInModal";
 import { fetchProfile } from "@/constants";
 import { motion } from "framer-motion";
 
-export default function followButton({ targetId }) {
+export default function FollowButton({ targetId }) {
   const [isFollowing, setIsFollowing] = useState(false);
   const [showModal, setShowModal] = useState(false);
 

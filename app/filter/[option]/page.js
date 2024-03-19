@@ -9,7 +9,7 @@ export default async function SearchByFilter({ params }) {
     const data = await fetchFilteredList(option);
 
     if (!data) {
-        return <NotFoundPage />;
+      return <NotFoundPage />;
     }
 
     // debugging purposes
@@ -28,11 +28,12 @@ export default async function SearchByFilter({ params }) {
     if (!data || !data.documents) {
       return (
         <div>
-          <div className="flex justify-end"> 
-            <SortFilterDropdown/>
+          <div className="flex justify-end">
+            <SortFilterDropdown />
           </div>
-          <p className="text-3xl text-gray-500 font-light flex flex-col items-center justify-center h-screen text-fadeIn"> 
-            No results found under "{filterOptionText}". Try another filter option!
+          <p className="text-3xl text-gray-500 font-light flex flex-col items-center justify-center h-screen text-fadeIn">
+            No results found under &quot;{filterOptionText}&quot;. Try another
+            filter option!
           </p>
         </div>
       );
@@ -41,10 +42,10 @@ export default async function SearchByFilter({ params }) {
     return (
       <div>
         <div className="flex justify-between">
-          <p className="font-light text-xl px-12 mt-3"> 
+          <p className="font-light text-xl px-12 mt-3">
             {data.documents.length} results sorted by: {filterOptionText}
           </p>
-          <SortFilterDropdown/>
+          <SortFilterDropdown />
         </div>
         <div className="m-10 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
           {data.documents.map((post) => (
@@ -54,6 +55,6 @@ export default async function SearchByFilter({ params }) {
       </div>
     );
   } catch (error) {
-    console.error('Error fetching recipe by filter option:', error);
+    console.error("Error fetching recipe by filter option:", error);
   }
 }
