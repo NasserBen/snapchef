@@ -60,7 +60,7 @@ export default function CreatePost() {
 
     try {
       // Step 1: Get pre-signed URL for image upload
-      const presignedUrlResponse = await fetch("api/getUploadImageURL", {
+      const presignedUrlResponse = await fetch("/api/getUploadImageURL", {
         method: "POST",
         body: JSON.stringify({ id: session?.user?.name }),
       });
