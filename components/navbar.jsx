@@ -61,15 +61,33 @@ function Navbar() {
     setSearchTerm("");
   };
 
-  // autocomplete feature
+  // // autocomplete feature
+  // useEffect(() => {
+  //   if (searchTerm.length > 1) {
+  //     fetchRecipeNames(searchTerm)
+  //       .then((data) => setSuggestions(data?.recipeNames || []))
+  //       .catch((error) => console.error("Error fetching recipe names:", error));
+  //   } else {
+  //     setSuggestions([]);
+  //   }
+  // }, [searchTerm]);
+
   useEffect(() => {
-    if (searchTerm.length > 1) {
-      fetchRecipeNames(searchTerm)
-        .then((data) => setSuggestions(data?.recipeNames || []))
-        .catch((error) => console.error("Error fetching recipe names:", error));
-    } else {
-      setSuggestions([]);
-    }
+    const fetchRecipeNames = async () => {
+      if (searchTerm.length > 1) {
+        try {
+          const recipeData = await fetch(`/api/fetchRecipeNames/2`);
+          const responseJson = await recipeData.json();
+          setSuggestions(responseJson?.recipeNames || []);
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      } else {
+        setSuggestions([]);
+      }
+    };
+
+    fetchRecipeNames();
   }, [searchTerm]);
 
   // fuzzy search integration
