@@ -53,7 +53,7 @@ export default function ProfileSettings({ setShowSettings, profileSettings }) {
           // Combine the year and object key into a single string
           const objectKey = `${datePart}/${idPart}`;
           presignedUrlResponse = await fetch(
-            `http://localhost:3000/api/getUploadImageURL?id=${id}?existingKey=${objectKey}`,
+            `${process.env.URL}/api/getUploadImageURL?id=${id}?existingKey=${objectKey}`,
             {
               method: "GET",
             }
@@ -61,7 +61,7 @@ export default function ProfileSettings({ setShowSettings, profileSettings }) {
         } else {
           // image url does not already exist
           presignedUrlResponse = await fetch(
-            `http://localhost:3000/api/getUploadImageURL?id=${id}`,
+            `${process.env.URL}/api/getUploadImageURL?id=${id}`,
             {
               method: "GET",
             }

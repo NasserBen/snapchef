@@ -1,7 +1,7 @@
 export async function fetchProfile(username) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/fetchProfile?username=${username}`,
+      `${process.env.URL}/api/fetchProfile?username=${username}`,
       {
         next: {
           revalidate: 0, // use 0 to opt out of using cache
@@ -23,7 +23,7 @@ export async function fetchProfile(username) {
 export async function fetchRecipe(recipeId) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/fetchRecipe?id=${recipeId}`,
+      `${process.env.URL}/api/fetchRecipe?id=${recipeId}`,
       {
         next: {
           revalidate: 0, // use 0 to opt out of using cache
@@ -45,7 +45,7 @@ export async function fetchRecipe(recipeId) {
 export async function fetchSearchTerm(term) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/fetchSearchTerm?term=${term}`,
+      `${process.env.URL}/api/fetchSearchTerm?term=${term}`,
       {
         next: {
           revalidate: 0, // use 0 to opt out of using cache
@@ -67,7 +67,7 @@ export async function fetchSearchTerm(term) {
 export async function fetchRecipeNames(searchTerm) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/fetchRecipeNames?searchTerm=${searchTerm}`,
+      `${process.env.URL}/api/fetchRecipeNames?searchTerm=${searchTerm}`,
       {
         next: {
           revalidate: 0, // use 0 to opt out of using cache
@@ -89,7 +89,7 @@ export async function fetchRecipeNames(searchTerm) {
 export async function fetchFilteredList(option) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/fetchFilteredList?option=${option}`,
+      `${process.env.URL}/api/fetchFilteredList?option=${option}`,
       {
         next: {
           revalidate: 0, // use 0 to opt out of using cache
@@ -111,7 +111,7 @@ export async function fetchFilteredList(option) {
 export async function fetchFavRecipes(username) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/fetchFavRecipes?username=${username}`,
+      `${process.env.URL}/api/fetchFavRecipes?username=${username}`,
       {
         next: {
           revalidate: 0, // use 0 to opt out of using cache
@@ -131,7 +131,7 @@ export async function fetchFavRecipes(username) {
 }
 
 export async function getHomePageRecipes() {
-  const res = await fetch("http://localhost:3000/api/homeRecipes", {
+  const res = await fetch(`${process.env.URL}/api/homeRecipes`, {
     next: { revalidate: 0 },
   });
   if (!res.ok) {
